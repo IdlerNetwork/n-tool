@@ -4,6 +4,7 @@ from rich.align import Align
 from rich.text import Text
 from rich import box
 import time
+import os
 
 class Colors:
     RESET = '\033[0m'
@@ -161,8 +162,11 @@ TITLE_COLORED = c_n(
     " &x&F&9&A&6&D&3&lH&x&F&F&8&5&C&7&la"
 )
 
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def ntool():
-    """Display the full N-Tool startup interface."""
+    clear()
     screen_width = console.size.width
     box_width = 75
     if screen_width < 79:
@@ -182,6 +186,19 @@ def ntool():
     )
 
     console.print(Align.center(panel))
+    print("")
+    admin = Panel(
+        Align.center(Text.from_ansi(
+            f"{C.INFO}Admin: {C.BOLD}Idler Ha{C.RESET}\n"
+            f"{C.INFO}GitHub: {C.PRIMARY}https://github.com/IdlerNetwork{C.RESET}"
+        )),
+        title="[bold cyan]Admin Information[/bold cyan]",
+        title_align="center",
+        width=box_width,
+        border_style="bold cyan",
+    )
+
+    console.print(Align.center(admin))
 
 if __name__ == "__main__":
     ntool()
