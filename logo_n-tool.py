@@ -181,7 +181,6 @@ def ntool():
         box=box.SQUARE,
     )
 
-    console.print()
     console.print(Align.center(panel))
 
 if __name__ == "__main__":
